@@ -1,4 +1,4 @@
-const CACHE = "fukuoka-trip-v20";
+const CACHE = "fukuoka-trip-v21";
 const baseUrl = new URL("./", self.registration.scope);
 const assetUrl = (path) => new URL(path, baseUrl).toString();
 const STATIC_FILES = [
