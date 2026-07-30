@@ -1,4 +1,4 @@
-const CACHE = "fukuoka-trip-v23";
+const CACHE = "fukuoka-trip-v24";
 const baseUrl = new URL("./", self.registration.scope);
 const assetUrl = (path) => new URL(path, baseUrl).toString();
 const STATIC_FILES = [
@@ -7,13 +7,18 @@ const STATIC_FILES = [
   assetUrl("icons/icon-192.png"),
   assetUrl("icons/icon-512.png"),
   assetUrl("icons/apple-touch-icon.png"),
-  assetUrl("assets/app.js"),
-  assetUrl("assets/app.css"),
-  assetUrl("assets/github-app.js"),
+  assetUrl("assets/app-v24.js"),
+  assetUrl("assets/app-v24.css"),
+  assetUrl("assets/github-app-v24.js"),
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => Promise.allSettled(STATIC_FILES.map((url) => cache.add(url)))));
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => Promise.allSettled(STATIC_FILES.map(async (url) => {
+      const response = await fetch(url, { cache: "reload" });
+      if (response.ok) await cache.put(url, response);
+    }))),
+  );
   self.skipWaiting();
 });
 
@@ -27,7 +32,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET" || !event.request.url.startsWith(baseUrl.href)) return;
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { cache: "no-store" })
       .then((response) => {
         const copy = response.clone();
         caches.open(CACHE).then((cache) => cache.put(event.request, copy));
