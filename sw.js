@@ -1,4 +1,4 @@
-const CACHE = "fukuoka-trip-v28";
+const CACHE = "fukuoka-trip-v29";
 const baseUrl = new URL("./", self.registration.scope);
 const assetUrl = (path) => new URL(path, baseUrl).toString();
 const STATIC_FILES = [
@@ -7,9 +7,9 @@ const STATIC_FILES = [
   assetUrl("icons/icon-192.png"),
   assetUrl("icons/icon-512.png"),
   assetUrl("icons/apple-touch-icon.png"),
-  assetUrl("assets/app-v28.js"),
-  assetUrl("assets/app-v28.css"),
-  assetUrl("assets/github-app-v28.js"),
+  assetUrl("assets/app-v29.js"),
+  assetUrl("assets/app-v29.css"),
+  assetUrl("assets/github-app-v29.js"),
 ];
 
 self.addEventListener("install", (event) => {
