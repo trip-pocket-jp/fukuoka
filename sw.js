@@ -1,4 +1,4 @@
-const CACHE = "fukuoka-trip-v83";
+const CACHE = "fukuoka-trip-v84";
 const baseUrl = new URL("./", self.registration.scope);
 const assetUrl = (path) => new URL(path, baseUrl).toString();
 const STATIC_FILES = [
@@ -11,9 +11,9 @@ const STATIC_FILES = [
   assetUrl("guides/jr-hakata-hikari-square.jpg"),
   assetUrl("guides/jr-hakata-shinkansen-gate.jpg"),
   assetUrl("guides/jr-kokura-shinkansen-gate.jpg"),
-  assetUrl("assets/app-v83.js"),
-  assetUrl("assets/app-v83.css"),
-  assetUrl("assets/github-app-v83.js"),
+  assetUrl("assets/app-v84.js"),
+  assetUrl("assets/app-v84.css"),
+  assetUrl("assets/github-app-v84.js"),
 ];
 
 self.addEventListener("install", (event) => {
